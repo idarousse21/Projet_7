@@ -10,6 +10,8 @@ def get_actions_from_csv():
         next(reader)
         for row in reader:
             if float(row[1]) > 0.0 < float(row[2]):
+                if len(actions) == 20:
+                    break
                 action = (
                     row[0],
                     float(row[1]),
@@ -47,6 +49,7 @@ def get_best_combination():
             best_combination = combination
             max_money = total_action_profitability
             total_cost_best_action = total_cost_actions
+
     return best_combination, total_cost_best_action, max_money
 
 
@@ -62,4 +65,4 @@ times = result_time / numbers
 print(f"la meilleur combinaison d'action est:\n{result[0]}\n")
 print(f"le prix d'achat de la combinaison est de:\n{result[1]:.2f}€\n")
 print(f"le bénéfice pour l'achat de ces actions est de:\n{result[2]:.2f}€\n")
-print(f"Le temps de lancemant du programme est de:\n{times:.2f} secondes")
+print(f"Le temps de lancemant du programme est de:\n{times:.4f} secondes")
